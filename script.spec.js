@@ -1,4 +1,4 @@
-import {add, subtract, multiply, divide} from "./script.js";
+import {add, subtract, multiply, divide, operate} from "./script.js";
 
 
 describe("add", () => {
@@ -83,4 +83,24 @@ describe("divide", () => {
     test("zero divide by zero", () =>{
         expect(divide(0, 0)).toBe(NaN);
     });
+});
+
+describe("operate", () => {
+    test("add", () => {
+        expect(operate("+", 5, 2)).toBe(7);
+    });
+
+    test("subtract", () => {
+        expect(operate("-", 5, 2)).toBe(3);
+    });
+
+    test("multiply", () => {
+        expect(operate("*", 5, 2)).toBe(10);
+    });
+
+    test("divide", () => {
+        expect(operate("/", 5, 2)).toBeCloseTo(2.5);
+    });
+
+
 });
