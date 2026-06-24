@@ -28,3 +28,17 @@ describe("subtract", () => {
         expect(add(-5, 2)).toBe(-7);
     });
 });
+
+describe("multiply", () => {
+    test("positive numbers", () =>{
+        expect(add(2, 4)).toBe(8);
+    });
+
+    test("negative numbers", () =>{
+        expect(add(-5, -3)).toBe(15);
+    });
+
+    test("mixed numbers", () =>{
+        expect(add(-3, 4)).toBe(-12);
+    });
+});
