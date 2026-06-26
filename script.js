@@ -63,7 +63,10 @@ export function updateOperand(num){
 export function updateOperator(op){
     if (operator == undefined) {
         operator = op;
+        return true;
     }
+
+    return false;
 }
 
 const numbers = document.querySelectorAll(".number");
@@ -86,7 +89,7 @@ operators.forEach((button) => {
     button.addEventListener("click", (event) => {
         text = event.target.textContent;
         display(text);
-        updateOperand(Number(text))
+        updateOperator(text);
     });
 
 });

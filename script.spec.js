@@ -103,20 +103,20 @@ describe("operate", () => {
     });
 });
 
-describe("updateOperand", () => {
+describe("updateOperator", () => {
     beforeEach(() => {
         setOperator(undefined);
     });
 
     test("op undefined", () => {
-        updateOperator("+");
+        expect(updateOperator("+")).toBe(true);
 
         expect(operator).toBe("+");
     });
 
     test("op defined", () => {
         setOperator("-");
-        updateOperand("x");
+        expect(updateOperator("x")).toBe(false);
 
         expect(operator).toBe("-");
     });
