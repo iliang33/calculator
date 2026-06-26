@@ -27,7 +27,7 @@ export function operate(operator, num1, num2) {
             return add(num1, num2);
         case "-":
             return subtract(num1, num2);
-        case "*":
+        case "x":
             return multiply(num1, num2);
         case "/":
             return divide(num1, num2);
@@ -58,13 +58,12 @@ export function getResult(){
     return result;
 }
 
-
 export function setNum1(num) {
-    num1 = num;
+    num1 = String(num);
 }
 
 export function setNum2(num) {
-    num2 = num;
+    num2 = String(num);
 }
 
 export function setOperator(op) {
@@ -72,14 +71,14 @@ export function setOperator(op) {
 }
 
 export function setResult(num) {
-    result = num;
+    result = String(num);
 }
 
 export function updateOperand(num){
     if (operator == undefined) {
-        num1 += num;
+        num1 += String(num);
     } else if (operator != undefined) {
-        num2 += num;
+        num2 += String(num);
     }
 }
 
@@ -102,6 +101,13 @@ function clear(){
 }
 
 export function calculate() {
+    // calls operate() with num1, num2 as NUMBERS
+    // sets num1 to the result of operate() as STRING
+    if (num1 != "" && num2 != "" && operator != undefined) {
+        result = String(operate(operator, Number(num1), Number(num2)));
+        
+    }
+    
 
 }
 

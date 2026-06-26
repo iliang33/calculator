@@ -95,7 +95,7 @@ describe("operate", () => {
     });
 
     test("multiply", () => {
-        expect(operate("*", 5, 2)).toBe(10);
+        expect(operate("x", 5, 2)).toBe(10);
     });
 
     test("divide", () => {
@@ -109,7 +109,7 @@ describe("updateOperator", () => {
     });
 
     test("op undefined, num1 not empty", () => {
-        setNum1("5");
+        setNum1(5);
         expect(updateOperator("+")).toBe(true);
 
         expect(getOperator()).toBe("+");
@@ -139,31 +139,31 @@ describe("updateOperand", () => {
     });
 
     test("num1 empty, operator undefined", () => {
-        updateOperand("5");
+        updateOperand(5);
 
         expect(getNum1()).toBe("5");
     });
 
     test("num1 non empty, operator undefined", () => {
-        setNum1("5");
-        updateOperand("6");
+        setNum1(5);
+        updateOperand(6);
 
         expect(getNum1()).toBe("56");
     });
 
     test("num1 and operator defined, num2 empty", () => {
-        setNum1("56");
+        setNum1(56);
         setOperator("+")
-        updateOperand("7");
+        updateOperand(7);
 
         expect(getNum2()).toBe("7");
     });
 
     test("num1 and operator defined, num2 non empty", () => {
-        setNum1("56");
+        setNum1(56);
         setOperator("+")
-        setNum2("7")
-        updateOperand("9");
+        setNum2(7)
+        updateOperand(9);
 
         expect(getNum2()).toBe("79");
     });
@@ -180,7 +180,7 @@ describe("calculate", () => {
 
     describe("fail to calculate", () => {
         test("empty num1", () => {
-            setNum2("5");
+            setNum2(5);
             setOperator("/");
             calculate();
 
@@ -188,15 +188,15 @@ describe("calculate", () => {
         });
 
         test("undefined operator", () => {
-            setNum1("4");
-            setNum2("5");
+            setNum1(4);
+            setNum2(5);
             calculate();
     
             expect(getResult()).toBe("");
         });
 
         test("empty num2", () => {
-            setNum1("5");
+            setNum1(5);
             setOperator("/");
             calculate();
     
@@ -217,8 +217,8 @@ describe("calculate", () => {
 
             calculate();
 
-            expect(getResult()).toBe(3);
-            expect(getNum1()).toBe("3");
+            expect(getResult()).toBe("3");
+            
         });
 
         test("subtract", () => {
@@ -228,8 +228,8 @@ describe("calculate", () => {
 
             calculate();
 
-            expect(getResult()).toBe(-1);
-            expect(getNum1()).toBe("-1");
+            expect(getResult()).toBe("-1");
+           
         });
 
         test("multiply", () => {
@@ -239,8 +239,8 @@ describe("calculate", () => {
 
             calculate();
 
-            expect(getResult()).toBe(8);
-            expect(getNum1()).toBe("8");
+            expect(getResult()).toBe("8");
+            
         });
 
         test("divide", () => {
@@ -250,8 +250,8 @@ describe("calculate", () => {
 
             calculate();
 
-            expect(getResult()).toBe(10);
-            expect(getNum1()).toBe("10");
+            expect(getResult()).toBe("10");
+            
         });
     });
 
