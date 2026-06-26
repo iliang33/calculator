@@ -124,7 +124,7 @@ describe("updateOperand", () => {
 
     test("num1 and num2 defined", () => {
         setNum1(5);
-        setNum1(6);
+        setNum2(6);
         updateOperand(7);
 
         expect(num1).toBe(5);

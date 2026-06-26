@@ -49,7 +49,11 @@ export function setNum2(num) {
 }
 
 export function updateOperand(num){
-    return null; 
+    if (num1 == undefined) {
+        num1 = num;
+    } else if (num2 == undefined) {
+        num2 = num;
+    }
 }
 
 export function updateOperator(op){
