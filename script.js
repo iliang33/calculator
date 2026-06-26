@@ -30,3 +30,28 @@ export function operate(operator, num1, num2) {
             return divide(num1, num2);
     };
 }
+
+function display(item){
+    const p = document.createElement("p");
+    const display = document.querySelector(".display");
+
+    p.textContent = item;
+
+    display.appendChild(p);
+    
+
+}
+
+const numbers = document.querySelectorAll(".number");
+const operators = document.querySelectorAll(".operator");
+const misc = document.querySelectorAll(".misc");
+const clear = document.querySelector(".clear");
+const equal = document.querySelector(".equal");
+
+
+numbers.forEach((button) => {
+    button.addEventListener("click", (event) => {
+        display(event.target.textContent);
+    });
+
+});
