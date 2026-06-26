@@ -61,7 +61,9 @@ export function updateOperand(num){
 }
 
 export function updateOperator(op){
-    return null;
+    if (operator == undefined) {
+        operator = op;
+    }
 }
 
 const numbers = document.querySelectorAll(".number");
