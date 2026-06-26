@@ -18,7 +18,7 @@ export function multiply(num1, num2) {
 }
 
 export function divide(num1, num2) {
-    return num1 / num2;
+    return Math.round((num1 / num2) * 10000000000) / 10000000000;
 }
 
 export function operate(operator, num1, num2) {
