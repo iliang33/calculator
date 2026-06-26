@@ -108,10 +108,18 @@ describe("updateOperator", () => {
         setOperator(undefined);
     });
 
-    test("op undefined", () => {
+    test("op undefined, num1 not empty", () => {
+        setNum1("5");
         expect(updateOperator("+")).toBe(true);
 
         expect(operator).toBe("+");
+    });
+
+    test("op undefined, num1 empty", () => {
+        setNum1("");
+        expect(updateOperator("+")).toBe(false);
+
+        expect(operator).toBe(undefined);
     });
 
     test("op defined", () => {
@@ -125,30 +133,30 @@ describe("updateOperator", () => {
 
 describe("updateOperand", () => {
     beforeEach(() => {
-        setNum1(undefined);
-        setNum2(undefined);
+        setNum1("");
+        setNum2("");
     });
 
     test("num1 undefined", () => {
-        updateOperand(5);
+        updateOperand("5");
 
-        expect(num1).toBe(5);
+        expect(num1).toBe("5");
     });
 
     test("num1 defined and num2 undefined", () => {
-        setNum1(5);
-        updateOperand(6);
+        setNum1("5");
+        updateOperand("6");
 
-        expect(num2).toBe(6);
+        expect(num2).toBe("6");
     });
 
     test("num1 and num2 defined", () => {
-        setNum1(5);
-        setNum2(6);
-        updateOperand(7);
+        setNum1("5");
+        setNum2("6");
+        updateOperand("7");
 
-        expect(num1).toBe(5);
-        expect(num2).toBe(6);
+        expect(num1).toBe("5");
+        expect(num2).toBe("6");
     });
 
 });

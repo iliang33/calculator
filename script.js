@@ -1,6 +1,6 @@
-export let num1 = undefined;
+export let num1 = "";
 export let operator = undefined;
-export let num2 = undefined;
+export let num2 = "";
 
 const display = document.querySelector(".display");
 
@@ -55,15 +55,15 @@ export function setOperator(op) {
 }
 
 export function updateOperand(num){
-    if (num1 == undefined) {
+    if (num1 == "") {
         num1 = num;
-    } else if (num2 == undefined) {
+    } else if (num2 == "") {
         num2 = num;
     }
 }
 
 export function updateOperator(op){
-    if (operator == undefined) {
+    if (operator == undefined && num1 != "") {
         operator = op;
         return true;
     }
@@ -75,14 +75,14 @@ const numbers = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
 const misc = document.querySelectorAll(".misc");
 const clear = document.querySelector(".clear");
-const equal = document.querySelector(".equal");
+const equal = document.querySelector(".equals");
 
 
 numbers.forEach((button) => {
     button.addEventListener("click", (event) => {
         let text = event.target.textContent;
         displayItem(text);
-        updateOperand(Number(text))
+        updateOperand(text)
     });
 
 });
@@ -97,9 +97,12 @@ operators.forEach((button) => {
     });
 });
 
-clear.addEventListener("click", (event) => {
-    display.replaceChildren();
-    num1 = undefined;
-    operator = undefined;
-    num2 = undefined;
-})
+if (clear) {
+    clear.addEventListener("click", (event) => {
+        display.replaceChildren();
+        num1 = "";
+        operator = undefined;
+        num2 = "";
+    });
+}
+
