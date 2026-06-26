@@ -18,7 +18,13 @@ export function multiply(num1, num2) {
 }
 
 export function divide(num1, num2) {
-    return Math.round((num1 / num2) * 10000000000) / 10000000000;
+    let quotient = Math.round((num1 / num2) * 10000000000) / 10000000000;
+   
+    if (!Number.isFinite(quotient)) {
+        return "Error";
+    } else {
+        return quotient;
+    }
 }
 
 export function operate(operator, num1, num2) {
@@ -103,7 +109,9 @@ function clear(){
 export function calculate() {
     if (num1 != "" && num2 != "" && operator != undefined) {
         result = String(operate(operator, Number(num1), Number(num2)));
+        return true;
     }
+    return false;
 }
 
 const numbers = document.querySelectorAll(".number");
@@ -148,11 +156,12 @@ if (clearButton) {
 
 if (equalsButton) {
     equalsButton.addEventListener("click", (event) => {
-        calculate();
-        let answer = result;
-        clear();
-        displayItem(answer);
-        setNum1(answer);
+        if (calculate()){
+            let answer = result;
+            clear();
+            displayItem(answer);
+            setNum1(answer);
+        }
     });
 }
 
