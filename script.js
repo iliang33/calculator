@@ -96,26 +96,21 @@ function clear(){
     num1 = "";
     operator = undefined;
     num2 = "";
-    result = "";
+    
 
 }
 
 export function calculate() {
-    // calls operate() with num1, num2 as NUMBERS
-    // sets num1 to the result of operate() as STRING
     if (num1 != "" && num2 != "" && operator != undefined) {
         result = String(operate(operator, Number(num1), Number(num2)));
-        
     }
-    
-
 }
 
 const numbers = document.querySelectorAll(".number");
 const operators = document.querySelectorAll(".operator");
 const misc = document.querySelectorAll(".misc");
 const clearButton = document.querySelector(".clear");
-const equal = document.querySelector(".equals");
+const equalsButton = document.querySelector(".equals");
 
 
 numbers.forEach((button) => {
@@ -148,6 +143,16 @@ operators.forEach((button) => {
 if (clearButton) {
     clearButton.addEventListener("click", (event) => {
         clear();
+    });
+}
+
+if (equalsButton) {
+    equalsButton.addEventListener("click", (event) => {
+        calculate();
+        let answer = result;
+        clear();
+        displayItem(answer);
+        setNum1(answer);
     });
 }
 
