@@ -1,6 +1,6 @@
-let num1;
-let operator;
-let num2;
+export let num1 = undefined;
+export let operator = undefined;
+export let num2 = undefined;
 
 export function add(num1, num2) {
     return num1 + num2;
@@ -38,8 +38,22 @@ function display(item){
     p.textContent = item;
 
     display.appendChild(p);
-    
+}
 
+export function setNum1(num) {
+    num1 = num;
+}
+
+export function setNum2(num) {
+    num2 = num;
+}
+
+export function updateOperand(num){
+    return null; 
+}
+
+export function updateOperator(op){
+    return null;
 }
 
 const numbers = document.querySelectorAll(".number");
@@ -51,7 +65,18 @@ const equal = document.querySelector(".equal");
 
 numbers.forEach((button) => {
     button.addEventListener("click", (event) => {
-        display(event.target.textContent);
+        text = event.target.textContent;
+        display(text);
+        updateOperand(Number(text))
+    });
+
+});
+
+operators.forEach((button) => {
+    button.addEventListener("click", (event) => {
+        text = event.target.textContent;
+        display(text);
+        updateOperand(Number(text))
     });
 
 });

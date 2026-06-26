@@ -1,4 +1,4 @@
-import {add, subtract, multiply, divide, operate} from "./script.js";
+import {add, subtract, multiply, divide, setNum1, setNum2, num1, operator, num2, operate, updateOperand, updateOperator} from "./script.js";
 
 
 describe("add", () => {
@@ -101,6 +101,34 @@ describe("operate", () => {
     test("divide", () => {
         expect(operate("/", 5, 2)).toBeCloseTo(2.5);
     });
+});
 
+describe("updateOperand", () => {
+    beforeEach(() => {
+        setNum1(undefined);
+        setNum2(undefined);
+    });
+
+    test("num1 undefined", () => {
+        updateOperand(5);
+
+        expect(num1).toBe(5);
+    });
+
+    test("num1 defined and num2 undefined", () => {
+        setNum1(5);
+        updateOperand(6);
+
+        expect(num2).toBe(6);
+    });
+
+    test("num1 and num2 defined", () => {
+        setNum1(5);
+        setNum1(6);
+        updateOperand(7);
+
+        expect(num1).toBe(5);
+        expect(num2).toBe(6);
+    });
 
 });
