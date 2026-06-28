@@ -6,19 +6,19 @@ let result = "";
 const display = document.querySelector(".display");
 
 export function add(num1, num2) {
-    return num1 + num2;
+    return Number((num1 + num2).toFixed(10));
 }
 
 export function subtract(num1, num2) {
-    return num1 - num2;
+    return Number((num1 - num2).toFixed(10));
 }
 
 export function multiply(num1, num2) {
-    return num1 * num2;
+    return Number((num1 * num2).toFixed(10));
 }
 
 export function divide(num1, num2) {
-    let quotient = Math.round((num1 / num2) * 10000000000) / 10000000000;
+    let quotient = Number((num1 / num2).toFixed(10));
    
     if (!Number.isFinite(quotient)) {
         return "Error";
@@ -49,7 +49,6 @@ function displayItem(item){
         display.appendChild(p);
 
     }
-    
 }
 
 export function getNum1(){
@@ -84,11 +83,11 @@ export function setResult(num) {
     result = String(num);
 }
 
-export function updateOperand(num){
+export function updateOperand(item){
     if (operator == undefined) {
-        num1 += String(num);
+        num1 += String(item);
     } else if (operator != undefined) {
-        num2 += String(num);
+        num2 += String(item);
     }
 }
 
@@ -109,6 +108,7 @@ function clear(){
     num1 = "";
     operator = undefined;
     num2 = "";
+    result = "";
     
 
 }
@@ -121,6 +121,7 @@ export function calculate() {
         clear();
         displayItem(answer);
         setNum1(answer);
+        setResult(answer);
         
     }
     
@@ -177,4 +178,24 @@ if (equalsButton) {
         calculate();
     });
 }
+
+misc.forEach((button) => {
+    if (button.textContent == ".") {
+        button.addEventListener("click", () => {
+            if (result == "") {
+                if (operator == undefined) {
+                    if (!num1.includes(".")) {
+                        updateOperand(".");
+                        displayItem(".");
+                    }
+                } else {
+                    if (!num2.includes(".")) {
+                        updateOperand(".");
+                        displayItem(".");
+                    }
+                }
+            }
+        });
+    }
+});
 
