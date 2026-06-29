@@ -216,10 +216,29 @@ misc.forEach((button) => {
                 }
             }
         });
+    } else if (button.textContent == "+/-") {
+        button.addEventListener("click", () => {
+            if (result == "") {
+                if (operator == undefined) {
+                    if (num1 == "") {
+                        updateOperand("-");
+                        displayItem("-");
+                    }
+                } else {
+                    if (num2 == "") {
+                        updateOperand("-");
+                        displayItem("-");
+                    }
+                }
+            }
+        });
     }
 });
 
-toggleButton.addEventListener("click", () => {
-    toggleTheme();
-});
+if (toggleButton) {
+    toggleButton.addEventListener("click", () => {
+        toggleTheme();
+    });
+}
+
 
