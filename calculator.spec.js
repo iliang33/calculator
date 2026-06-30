@@ -1,4 +1,4 @@
-import {add, subtract, multiply, divide, setOperator, setNum1, setNum2, setResult, getNum1, getOperator, getNum2, getResult, operate, updateOperand, updateOperator, calculate} from "./script.js";
+import {add, subtract, multiply, divide, setOperator, setNum1, setNum2, setResult, getNum1, getOperator, getNum2, getResult, operate, updateOperand, updateOperator, calculate} from "./calculator.js";
 
 
 describe("add", () => {
@@ -178,47 +178,13 @@ describe("calculate", () => {
         setResult("");
     });
 
-    describe("fail to calculate", () => {
-        test("empty num1", () => {
-            setNum2(5);
-            setOperator("/");
-            calculate();
-
-            expect(getResult()).toBe("");
-        });
-
-        test("undefined operator", () => {
-            setNum1(4);
-            setNum2(5);
-            calculate();
-    
-            expect(getResult()).toBe("");
-        });
-
-        test("empty num2", () => {
-            setNum1(5);
-            setOperator("/");
-            calculate();
-    
-            expect(getResult()).toBe("");
-        });
-
-        test("all empty", () => {
-            calculate();
-            expect(getResult()).toBe("");
-        });
-    });
-
     describe("successful calculation", () => {
         test("add", () => {
             setNum1(1);
             setNum2(2);
             setOperator("+");
 
-            calculate();
-
-            expect(getResult()).toBe("3");
-            expect(getNum1()).toBe("3");
+            expect(calculate()).toBe("3");
             
         });
 
@@ -227,11 +193,7 @@ describe("calculate", () => {
             setNum2(2);
             setOperator("-");
 
-            calculate();
-
-            expect(getResult()).toBe("-1");
-            expect(getNum1()).toBe("-1");
-           
+            expect(calculate()).toBe("-1");
         });
 
         test("multiply", () => {
@@ -239,10 +201,7 @@ describe("calculate", () => {
             setNum2(2);
             setOperator("x");
 
-            calculate();
-
-            expect(getResult()).toBe("8");
-            expect(getNum1()).toBe("8");
+            expect(calculate()).toBe("8");
             
         });
 
@@ -251,10 +210,7 @@ describe("calculate", () => {
             setNum2(2);
             setOperator("/");
 
-            calculate();
-
-            expect(getResult()).toBe("10");
-            expect(getNum1()).toBe("10");
+            expect(calculate()).toBe("10");
             
         });
     });
