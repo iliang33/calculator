@@ -15,13 +15,24 @@ but is also a project with room for more complicated extensions
 - Light and dark theme toggle button
 - Keyboard support
 
-## Languages used
+## Technologies used
 - HTML
 - CSS
-- JS
+- JavaScript
+- Jest
+
+## Requirements
+- a modern web browser (Ex: Chrome, Firefox, Safari, Edge)
+- Node.js and npm 
 
 ## Demo
 https://iliang33.github.io/calculator/
+
+## Running the project
+1. Clone the repo (https://github.com/iliang33/calculator.git)
+2. Install dependencies: npm install
+3. Run tests with npm test calculator.spec.js
+4. Open index.html in your browser
 
 ## Usage
 - Every button on screen corresponds to the same key except for:
